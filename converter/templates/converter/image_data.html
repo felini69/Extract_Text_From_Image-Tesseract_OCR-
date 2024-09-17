@@ -1,0 +1,33 @@
+{% extends "converter/base.html" %}
+
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white text-center">
+                    <h3 class="card-title">Convert Image to Data</h3>
+                </div>
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Upload Image</label>
+                            <input type="file" class="form-control" id="image" name="image" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-3">Convert</button>
+                    </form>
+
+                    {% if data %}
+                    <div class="mt-4">
+                        <h3>Extracted Data</h3>
+                        <pre>{{ data }}</pre>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
